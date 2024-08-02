@@ -56,3 +56,13 @@ The function should return `true` if the bird has gathered all of the seeds and 
 win(hasPickedUpAllSeeds: false, powerUpActive: true, touchingEagle: false)
 // Returns false
 ```
+
+## Documentation
+
+If you need more information on the topic, please refer to the [documentation](./docs/introduction.md). The documentation provides comprehensive details and explanations that can help you understand the subject better.
+
+If you find yourself stuck or unsure about how to proceed, don't hesitate to look at the [hints](./docs/hints.md) provided. The hints are designed to guide you through challenging parts and offer clues that can help you find the right solution.
+
+Remember, it's normal to seek help and use available resources when learning something new.
+
+Good luck!
