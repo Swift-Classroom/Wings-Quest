@@ -1,115 +1,113 @@
-import XCTest
+import Testing
 
-@testable import WingsQuest
-
-class TaskBonusPoints: XCTestCase {
-  func testGetsBonusPoints() {
-    XCTAssertTrue(
-      bonusPoints(powerUpActive: true, touchingEagle: true)
-    )
-  }
-
-  func testNoBonusPointsWhenNotPowerUpActive() throws {
+struct TaskBonusPoints {
+    func testGetsBonusPoints() {
+        #expect(
+            bonusPoints(powerUpActive: true, touchingEagle: true) == true
+        )
+    }
     
-    XCTAssertFalse(
-      bonusPoints(powerUpActive: false, touchingEagle: true)
-    )
-  }
-
-  func testNoBonusPointsWhenNotTouchingOtherBird() throws {
+    func testNoBonusPointsWhenNotPowerUpActive() throws {
+        
+        #expect(
+            bonusPoints(powerUpActive: false, touchingEagle: true) == false
+        )
+    }
     
-    XCTAssertFalse(
-      bonusPoints(powerUpActive: true, touchingEagle: false)
-    )
-  }
-
-  func testNoBonusPointsWhenNotTouchingOtherBirdnorPowerUp() throws {
+    func testNoBonusPointsWhenNotTouchingOtherBird() throws {
+        
+        #expect(
+            bonusPoints(powerUpActive: true, touchingEagle: false) == false
+        )
+    }
     
-    XCTAssertFalse(
-      bonusPoints(powerUpActive: false, touchingEagle: false)
-    )
-  }
+    func testNoBonusPointsWhenNotTouchingOtherBirdnorPowerUp() throws {
+        
+        #expect(
+            bonusPoints(powerUpActive: false, touchingEagle: false) == false
+        )
+    }
 }
 
-class TaskScore: XCTestCase {
-  func testGetScore() throws {
+struct TaskScoreTests {
+    func testGetScore() throws {
+        
+        #expect(
+            score(touchingPowerUp: true, touchingSeed: true) == true
+        )
+    }
     
-    XCTAssertTrue(
-      score(touchingPowerUp: true, touchingSeed: true)
-    )
-  }
-
-  func testGetScoreWhenNotTouchingSeed() throws {
+    func testGetScoreWhenNotTouchingSeed() throws {
+        
+        #expect(
+            score(touchingPowerUp: false, touchingSeed: true) == true
+        )
+    }
     
-    XCTAssertTrue(
-      score(touchingPowerUp: false, touchingSeed: true)
-    )
-  }
-
-  func testGetScoreWhenNotTouchingPowerUp() throws {
+    func testGetScoreWhenNotTouchingPowerUp() throws {
+        
+        #expect(
+            score(touchingPowerUp: true, touchingSeed: false) == true
+        )
+    }
     
-    XCTAssertTrue(
-      score(touchingPowerUp: true, touchingSeed: false)
-    )
-  }
-
-  func testNoScoreWhenBothIsFalse() throws {
-    
-    XCTAssertFalse(
-      score(touchingPowerUp: false, touchingSeed: false)
-    )
-  }
+    func testNoScoreWhenBothIsFalse() throws {
+        
+        #expect(
+            score(touchingPowerUp: false, touchingSeed: false) == false
+        )
+    }
 }
 
-class TaskLose: XCTestCase {
-  func testLose() throws {
+struct TaskLoseTests {
+    func testLose() throws {
+        
+        #expect(
+            lose(powerUpActive: false, touchingEagle: true) == true
+        )
+    }
     
-    XCTAssertTrue(
-      lose(powerUpActive: false, touchingEagle: true)
-    )
-  }
-
-  func testDontLoseWhenPowerUp() throws {
+    func testDontLoseWhenPowerUp() throws {
+        
+        #expect(
+            lose(powerUpActive: true, touchingEagle: true) == false
+        )
+    }
     
-    XCTAssertFalse(
-      lose(powerUpActive: true, touchingEagle: true)
-    )
-  }
-
-  func testDontLoseWhenNotTouchingAndPowerUp() throws {
+    func testDontLoseWhenNotTouchingAndPowerUp() throws {
+        
+        #expect(
+            lose(powerUpActive: false, touchingEagle: false) == false
+        )
+    }
     
-    XCTAssertFalse(
-      lose(powerUpActive: false, touchingEagle: false)
-    )
-  }
-
-  func testDontLoseWhenNotTouching() throws {
-    
-    XCTAssertFalse(
-      lose(powerUpActive: true, touchingEagle: false)
-    )
-  }
+    func testDontLoseWhenNotTouching() throws {
+        
+        #expect(
+            lose(powerUpActive: true, touchingEagle: false) == false
+        )
+    }
 }
 
-class TaskWin: XCTestCase {
-  func testWin() throws {
+struct TaskWinTests {
+    func testWin() throws {
+        
+        #expect(
+            win(hasPickedUpAllSeeds: true, powerUpActive: false, touchingEagle: false) == true
+        )
+    }
     
-    XCTAssertTrue(
-      win(hasPickedUpAllSeeds: true, powerUpActive: false, touchingEagle: false)
-    )
-  }
-
-  func testDontWinIfLost() throws {
+    func testDontWinIfLost() throws {
+        
+        #expect(
+            win(hasPickedUpAllSeeds: true, powerUpActive: false, touchingEagle: true) == false
+        )
+    }
     
-    XCTAssertFalse(
-      win(hasPickedUpAllSeeds: true, powerUpActive: false, touchingEagle: true)
-    )
-  }
-
-  func testWinIfPickedUpAllSeedsAndTouchingOtherBird() throws {
-    
-    XCTAssertFalse(
-      win(hasPickedUpAllSeeds: true, powerUpActive: false, touchingEagle: true)
-    )
-  }
+    func testWinIfPickedUpAllSeedsAndTouchingOtherBird() throws {
+        
+        #expect(
+            win(hasPickedUpAllSeeds: true, powerUpActive: false, touchingEagle: true) == false
+        )
+    }
 }
