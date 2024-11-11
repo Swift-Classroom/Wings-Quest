@@ -1,4 +1,5 @@
 import Testing
+@testable import WingsQuest
 
 struct TaskBonusPoints {
     func testGetsBonusPoints() {
